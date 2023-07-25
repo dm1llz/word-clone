@@ -18,6 +18,7 @@ function GuessForm({ addGuess }) {
         id="guess-input"
         pattern="[A-Z]{5}"
         onChange={(event) => setGuess(event.target.value.toUpperCase())}
+        required
         title="Your guess must be 5 characters"
         type="text"
         value={guess}

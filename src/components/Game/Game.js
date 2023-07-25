@@ -19,7 +19,7 @@ function Game() {
 
   return (
     <>
-      <GuessPanel guesses={guesses} />
+      <GuessPanel answer={answer} guesses={guesses} />
       <GuessForm addGuess={addGuess} />
     </>
   );
