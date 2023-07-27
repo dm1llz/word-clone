@@ -1,26 +1,26 @@
 import React from "react";
 
-function ResultBanner({ answer, attempts, gameState }) {
-  if (gameState === "win") {
-    return (
-      <div className="happy banner">
-        <p>
-          <strong>Congratulations!</strong> Got it in{" "}
-          <strong>{attempts} guesses</strong>.
-        </p>
-      </div>
-    );
-  } else if (gameState === "lose") {
-    return (
-      <div className="sad banner">
-        <p>
-          Sorry, the correct answer is <strong>{answer}</strong>.
-        </p>
-      </div>
-    );
-  }
+function ResultBanner({ answer, attempts, gameState, resetGame }) {
+  if (!gameState) return null;
 
-  return null;
+  const content =
+    gameState === "win" ? (
+      <p>
+        <strong>Congratulations!</strong> Got it in{" "}
+        <strong>{attempts} guesses</strong>.
+      </p>
+    ) : (
+      <p>
+        Sorry, the correct answer is <strong>{answer}</strong>.
+      </p>
+    );
+
+  return (
+    <div className={`${gameState === "win" ? "happy" : "sad"} banner`}>
+      <button onClick={resetGame}>Reset Game</button>
+      {content}
+    </div>
+  );
 }
 
 export default ResultBanner;
