@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function GuessForm({ addGuess }) {
+function GuessForm({ addGuess, gameOver }) {
   const [guess, setGuess] = useState("");
 
   function handleSubmit(event) {
@@ -15,7 +15,9 @@ function GuessForm({ addGuess }) {
     <form className="guess-input-wrapper" onSubmit={handleSubmit}>
       <label htmlFor="guess-input">Enter guess:</label>
       <input
+        disabled={gameOver}
         id="guess-input"
+        maxLength={5}
         pattern="[A-Z]{5}"
         onChange={(event) => setGuess(event.target.value.toUpperCase())}
         required
